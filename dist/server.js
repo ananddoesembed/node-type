@@ -1,11 +1,13 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const http = require('http');
-const reListen = (req, res) => {
-    console.log(req.rawHeaders, req.url, req.method);
-    res.setHeader('Content-Type', 'Applications/json');
-    res.end(JSON.stringify({ name: 'hi' }));
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-const server = http.createServer(reListen);
-server.listen(3000);
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = __importDefault(require("express"));
+const server = express_1.default();
+server.use((req, res) => {
+    console.log(req);
+    res.send('hi');
+});
+server.listen(3000, () => console.log('listening'));
 //# sourceMappingURL=server.js.map

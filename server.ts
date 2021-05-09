@@ -1,12 +1,11 @@
-import { Http2ServerRequest, Http2ServerResponse } from "http2"
 
-const http = require('http')
+import express from 'express'
+const server = express()
 
-const reListen = (req:Http2ServerRequest,res:Http2ServerResponse)=>{
-console.log(req.rawHeaders,req.url,req.method)
-res.setHeader('Content-Type','Applications/json')
-res.end(JSON.stringify({name:'hi'}));
-}
-const server = http.createServer(reListen)
-
-server.listen(3000)
+server.use((req,res)=>{
+    console.log(req)
+    res.send('hi')
+})
+  
+server.listen(3000,()=>
+console.log('listening'))
